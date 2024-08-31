@@ -30,8 +30,8 @@ This project is a FastAPI-based web application that implements the TextRank alg
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/yourusername/textrank-api.git
-    cd textrank-api
+    git clone https://github.com/PMP56/text-rank.git
+    cd text-rank
     ```
 
 2. **Create a virtual environment and activate it:**
