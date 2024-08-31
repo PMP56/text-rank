@@ -1,0 +1,78 @@
+{%  extends 'base.html' %}
+{% block content %}
+<div class="min-h-screen w-full flex flex-col items-center justify-center text-neutral-600 py-10">
+    <form method="post" action="/" class="w-4/5">
+        <div class="w-full flex items-center justify-between py-10 md:py-0">
+            <h1 class="text-xl font-medium mb-4">Text Rank</h1>
+            <div class="flex items-center gap-2">
+                <div class="flex items-center">
+                    <input 
+                        id="keywords" 
+                        type="radio" 
+                        value="keywords" 
+                        name="algorithm" 
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
+                        {% if algorithm == 'keywords' %}checked{% endif %}
+                    >
+                    <label for="keywords" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Keyword Extraction</label>
+                </div>
+                <div class="flex items-center">
+                    <input 
+                        id="summarization" 
+                        type="radio" 
+                        value="summarization" 
+                        name="algorithm" 
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
+                        {% if algorithm == 'summarization' %}checked{% endif %}
+                    >
+                    <label for="summarization" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Summarization</label>
+                </div>
+            </div>
+            <div class="group relative">
+                <button type="button" class="text-white bg-sky-700 hover:bg-blue-800 font-medium rounded-lg text-xs px-4 py-2 text-center">
+                    Settings
+                </button>
+                <div class="absolute top-10 invisible group-hover:visible right-0 z-10 inline-block w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-300 shadow-lg rounded-lg">
+                    <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
+                        <h3 class="font-semibold text-gray-900 dark:text-white">Settings</h3>
+                    </div>
+                    <div class=" m-2">
+                        <p class="text-xs">Keyword count:</p>
+                        <input 
+                            id="keyword_count" 
+                            type="number" 
+                            value="10" 
+                            name="keyword_count" 
+                            class="w-full h-[26px] mt-1 p-1 bg-gray-200 border border-gray-300 rounded-sm"
+                        >
+                    </div>
+                    <div class="m-2 mb-4">
+                        <p class="text-xs">Summary sentences:</p>
+                        <input 
+                            id="sentence_count" 
+                            type="number" 
+                            value="3" 
+                            name="sentence_count" 
+                            class="w-full h-[26px] mt-1 p-1 bg-gray-200 border border-gray-300 rounded-sm"
+                        >
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="w-full flex flex-col md:flex-row items-center gap-4">
+            <textarea name="original" type="text" class="border-2 border-neutral-300 h-[360px] md:w-1/2 w-full rounded-md resize-none p-2 outline-none">{{original}}</textarea>
+            <textarea name="output" disabled type="text" class="border-2 border-neutral-300 h-[360px] md:w-1/2 w-full rounded-md resize-none p-2" >{{output}}</textarea>
+        </div>
+        {% if error %}
+            <div class="mt-2 p-2 bg-red-200 text-red-800 text-sm rounded-md">
+                <strong>Error:</strong> {{ error }}
+            </div>
+        {% endif %}
+        <input type="submit"  value="Submit" class="w-full bg-blue-500 p-2 mt-2 rounded-md text-white" />
+        {% if graph %}
+        <img src="{{ url_for('get_graph') }}" class="w-2/3 mt-2" />
+        {% endif %}
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+fastapi==0.110.3
+uvicorn==0.30.6
+jinja2==3.1.4 
+networkx==3.3
+scipy==1.12.0
+spacy==3.7.2
+matplotlib
+numpy
+gensim==4.3.2
+scikit-learn==1.5.1
