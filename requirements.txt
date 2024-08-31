@@ -8,3 +8,4 @@ matplotlib
 numpy
 gensim==4.3.2
 scikit-learn==1.5.1
+python-multipart==0.0.9
