@@ -4,6 +4,7 @@ jinja2==3.1.4
 networkx==3.3
 scipy==1.12.0
 spacy==3.7.2
+https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1.tar.gz
 matplotlib
 numpy
 gensim==4.3.2
