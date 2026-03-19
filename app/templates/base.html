@@ -1,9 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>{% block title %}Text Rank Visualizer{% endblock %}</title>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Primary meta -->
+  <title>{% block title %}TextRank Visualizer - Keyword Extraction & Summarization{% endblock %}</title>
+  <meta name="description" content="Graph-based NLP tool for extracting keywords and summarizing text using the TextRank algorithm. Visualize word relationships as an interactive graph." />
+  <meta name="keywords" content="TextRank, keyword extraction, text summarization, NLP, natural language processing, graph visualization" />
+  <meta name="author" content="TextRank" />
+
+  <!-- Open Graph (for link previews on Slack, Discord, iMessage, etc.) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="TextRank - Keyword Extraction & Summarization" />
+  <meta property="og:description" content="Graph-based NLP tool for extracting keywords and summarizing text using the TextRank algorithm." />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Canonical (update to your actual deployed URL) -->
+  <link rel="canonical" href="https://your-app.onrender.com/" />
+
+  <!-- Robots -->
+  <meta name="robots" content="index, follow" />
+
   <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}" />
 </head>
 <body>

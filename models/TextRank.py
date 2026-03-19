@@ -70,7 +70,7 @@ class TextRank:
                 "size": round((rank - min_r) / rng, 4),   # 0–1
             })
 
-        # Only look at edges between the top-K words — O(k²) not O(n²)
+        # Only look at edges between the top-K words - O(k²) not O(n²)
         output_indices = {idx for (_, _, idx) in ordered}
         edges = []
         seen = set()
