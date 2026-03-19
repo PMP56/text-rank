@@ -6,7 +6,6 @@ from models.TextRank import TextRank
 router = APIRouter()
 textrank = TextRank()
 
-# In-memory cache: stores last graph data so /graph-data can serve it
 _last_graph_data: dict = {"nodes": [], "edges": []}
 
 

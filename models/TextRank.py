@@ -14,36 +14,14 @@ from utils.summarize import train_w2v, get_similarity_matrix
 
 class TextRank:
     def __init__(self, epoch=10, damping_factor=0.85, threshold=0.001):
-        """
-        TextRank algorithm for keyword extraction and summarization.
-
-        Args:
-            epoch (int): Number of iterations for the PageRank algorithm.
-            damping_factor (float): Damping factor for the PageRank algorithm.
-            threshold (float): Convergence threshold for the PageRank algorithm.
-        """
+        
         self.epoch = epoch
         self.damping_factor = damping_factor
         self.threshold = threshold
         self.nlp = spacy.load("en_core_web_sm")
 
-    def keyword(self, text, keyword_count=10, plot=False,
-                epoch=None, damping_factor=None):
-        """
-        Extract keywords from the given text using the PageRank algorithm.
-
-        Args:
-            text (str): The input text from which to extract keywords.
-            keyword_count (int): Number of top keywords to return.
-            plot (bool): Whether to save a static graph image (legacy).
-            epoch (int): Override instance epoch for this call.
-            damping_factor (float): Override instance damping_factor for this call.
-
-        Returns:
-            list: A list of tuples (word, rank, vocab_index) for the top keywords.
-            np.ndarray: The normalized adjacency matrix.
-        """
-        epoch          = epoch          if epoch          is not None else self.epoch
+    def keyword(self, text, keyword_count=10, plot=False, epoch=None, damping_factor=None):
+        epoch = epoch if epoch is not None else self.epoch
         damping_factor = damping_factor if damping_factor is not None else self.damping_factor
 
         doc = self.nlp(text)
@@ -71,22 +49,7 @@ class TextRank:
 
         return ordered, norm_graph
 
-    def get_graph_data(self, text, keyword_count=10,
-                       epoch=None, damping_factor=None):
-        """
-        Return keyword graph data as a JSON-serialisable dict for interactive rendering.
-
-        Args:
-            text (str): Input text.
-            keyword_count (int): Number of top keywords.
-            epoch (int): Override instance epoch for this call.
-            damping_factor (float): Override instance damping_factor for this call.
-
-        Returns:
-            dict: { "nodes": [...], "edges": [...] }
-                  nodes: { id, label, rank, size }
-                  edges: { source, target, weight }
-        """
+    def get_graph_data(self, text, keyword_count=10, epoch=None, damping_factor=None):
         ordered, norm_graph = self.keyword(
             text, keyword_count=keyword_count,
             epoch=epoch, damping_factor=damping_factor
@@ -127,13 +90,6 @@ class TextRank:
         return {"nodes": nodes, "edges": edges}
 
     def _plot_graph(self, output, matrix):
-        """
-        Save a static matplotlib keyword graph (legacy / kept for compatibility).
-
-        Args:
-            output (list): Top keywords as (word, rank, vocab_index).
-            matrix (np.ndarray): Full normalised adjacency matrix.
-        """
         G = nx.Graph()
         for word, rank, _ in output:
             G.add_node(word, rank=rank)

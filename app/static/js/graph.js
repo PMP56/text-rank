@@ -1,5 +1,3 @@
-/* ── Slider live values ───────────────────────────────────────── */
-
 const epochSlider  = document.getElementById('epochSlider');
 const epochVal     = document.getElementById('epochVal');
 const dampingSlider = document.getElementById('dampingSlider');
@@ -17,8 +15,6 @@ if (dampingSlider) {
   });
 }
 
-/* ── Char counter ─────────────────────────────────────────────── */
-
 const inputText = document.getElementById('inputText');
 const charCount = document.getElementById('charCount');
 
@@ -30,15 +26,11 @@ function updateCount() {
 inputText.addEventListener('input', updateCount);
 updateCount();
 
-/* ── Loading state ────────────────────────────────────────────── */
-
 document.getElementById('mainForm').addEventListener('submit', function () {
   const btn = document.getElementById('submitBtn');
   btn.value = 'Analyzing…';
   btn.classList.add('loading');
 });
-
-/* ── D3 interactive graph ─────────────────────────────────────── */
 
 const container = document.getElementById('graph-container');
 
